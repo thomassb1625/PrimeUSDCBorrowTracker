@@ -1,7 +1,13 @@
 const ethers = require('ethers');
 const fs = require('fs');
+const masterStateAbi = require('../ABIs/MasterState.json');
 
-export async function getLogs(intrfc: any, topic: string, contractAddr: string, startBlock: number, endBlock: number) {
+let startBlock = 3895179;
+const topic = ethers.utils.id('LoanMarketEntered(address,uint256,address)');
+const intrfc =  new ethers.utils.Interface(masterStateAbi);
+const moonbaseChainId = 1287;
+
+export async function getUSDCBorrows(contractAddr: string, usdcAddr: string, deploymentBlock: number, endBlock: number) {
 
     let providerRPC = {
         moonbase: {
@@ -20,7 +26,9 @@ export async function getLogs(intrfc: any, topic: string, contractAddr: string, 
 
     let users: string[] = new Array();
 
-    let i = startBlock
+    if (deploymentBlock > startBlock) startBlock = deploymentBlock;
+
+    let i = startBlock;
 
     try {
         let lastUserData = JSON.parse(await fs.readFileSync('data/liveUserData.json'));
@@ -81,7 +89,12 @@ export async function getLogs(intrfc: any, topic: string, contractAddr: string, 
     rawLogs.forEach((log) => {
         let parsedLog = intrfc.parseLog(log);
         let user = parsedLog.args[2];
-        if(users.indexOf(user) === -1 && ethers.utils.isAddress(user)) users.push(user);
+        let loanAsset = parsedLog.args[0];
+        let loanAssetChainId = parseInt(parsedLog.args[1]._hex, 16);
+        if(users.indexOf(user) === -1 &&
+            ethers.utils.isAddress(user) &&
+            loanAssetChainId == moonbaseChainId &&
+            usdcAddr == loanAsset) users.push(user);
     });
 
     userData.push({users: users});

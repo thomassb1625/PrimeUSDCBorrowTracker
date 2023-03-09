@@ -1,0 +1,2852 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "masterInternalsAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "middleLayerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "crmAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "irmRouterAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "primeOracle",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "AccountNoAssets",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AddressExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AlreadyInitialized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "AmountIsZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "BorrowTooMuch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ChainIdExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ClaimerDenylisted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EccMessageAlreadyProcessed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EnterCollMarketFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "EnterLoanMarketFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExitCollMarketFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExitLoanMarketFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedBorrowAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedBridgeAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedDepositAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedMintAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedRepayAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedTradeAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedTransferAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedValue",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ExpectedWithdrawAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "receivedAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "expectedAddress",
+        "type": "address"
+      }
+    ],
+    "name": "IncorrectTargetAddress",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "receivedChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "expectedChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "IncorrectTargetChainId",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientLiquidity",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientReserves",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InsufficientRewards",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidExchangeRate",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidLiquidityIncentive",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPayload",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPrecision",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidPrice",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidProtocolSeizeShare",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidRatio",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidRiskPremium",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidSelector",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "LiquidateDisallowed",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "status",
+        "type": "bool"
+      }
+    ],
+    "name": "LoanMarketIsListed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MarketDoesNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MarketExists",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "MarketIsFrozen",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MarketIsUnlisted",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "market",
+        "type": "address"
+      }
+    ],
+    "name": "MarketIsdeprecated",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MarketNotListed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MaxMarketsEntered",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MiddleLayerExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MiddleLayerPaused",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MissingParameter",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "MsgDataExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bytes",
+        "name": "reason",
+        "type": "bytes"
+      }
+    ],
+    "name": "MultiCallFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "MultiStaticCallFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NameExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "who",
+        "type": "address"
+      }
+    ],
+    "name": "NotEnoughBalance",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      }
+    ],
+    "name": "NotInMarket",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NothingToWithdraw",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyAccount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyAdmin",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyAdminCandidate",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyAuth",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyGateway",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyMasterState",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyMiddleLayer",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyMintAuth",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyPToken",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyRelayer",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyRequestController",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyRoute",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "OnlyRouter",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      }
+    ],
+    "name": "PTokenIsFrozen",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "tradeAsset",
+        "type": "address"
+      }
+    ],
+    "name": "PairNotSupported",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "ParamOutOfBounds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RebasingTokensUnableToBeLoanable",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "Reentrancy",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "repayAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RepayTooMuch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RewardDoesNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RewardExists",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RewardNotListed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RouteExists",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "route",
+        "type": "address"
+      }
+    ],
+    "name": "RouteNotSupported",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "RsmNotFound",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SeizeTooMuch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "SymbolExpected",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "dest",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "TransferFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "dest",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "TransferFromFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "TransferPaused",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnexpectedDelta",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "selector",
+        "type": "bytes4"
+      }
+    ],
+    "name": "UnexpectedSelector",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnexpectedValueDelta",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnknownRevert",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnstakeTooMuch",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UspAddressZero",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "WithdrawTooMuch",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "collateral",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "borrowPlusEffects",
+        "type": "uint256"
+      }
+    ],
+    "name": "AccountLiquidity",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "AddChain",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newAdmin",
+        "type": "address"
+      }
+    ],
+    "name": "ChangeAdmin",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newCollateralFactor",
+        "type": "uint256"
+      }
+    ],
+    "name": "ChangedCollateralFactor",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "newFactorDecimals",
+        "type": "uint8"
+      }
+    ],
+    "name": "ChangedFactorDecimals",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newLiqIncentive",
+        "type": "uint256"
+      }
+    ],
+    "name": "ChangedLiqIncentive",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldMasterInternals",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newMasterInternals",
+        "type": "address"
+      }
+    ],
+    "name": "ChangedMasterInternals",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "oldMid",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "newMid",
+        "type": "address"
+      }
+    ],
+    "name": "ChangedMiddleLayer",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "newProtocolSeizeShare",
+        "type": "uint256"
+      }
+    ],
+    "name": "ChangedProtocolSeizeShare",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "collateral",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "depositAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalSupply",
+        "type": "uint256"
+      }
+    ],
+    "name": "CollateralDeposited",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "CollateralMarketEntered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "CollateralMarketExited",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "listed",
+        "type": "bool"
+      }
+    ],
+    "name": "CollateralMarketListed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "collateral",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "shortfall",
+        "type": "uint256"
+      }
+    ],
+    "name": "CollateralWithdrawalRejection",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "collateral",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalSupply",
+        "type": "uint256"
+      }
+    ],
+    "name": "CollateralWithdrawn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "liquidator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "repayAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "cTokenCollateral",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "seizeTokens",
+        "type": "uint256"
+      }
+    ],
+    "name": "LiquidateBorrow",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalBorrows",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "LoanApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "LoanMarketEntered",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      }
+    ],
+    "name": "LoanMarketExited",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "listed",
+        "type": "bool"
+      }
+    ],
+    "name": "LoanMarketListed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "shortfall",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "LoanRejected",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountRepaid",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalBorrows",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanMarketAsset",
+        "type": "address"
+      }
+    ],
+    "name": "LoanRepaid",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "asset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "maxColateralPercentage",
+        "type": "uint256"
+      }
+    ],
+    "name": "MaxCollateralPercentageUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "MessageFailed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "currentAdmin",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "adminCandidate",
+        "type": "address"
+      }
+    ],
+    "name": "ProposeAdmin",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_srcChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "_fromAddress",
+        "type": "address"
+      }
+    ],
+    "name": "ReceiveFromChain",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "liquidator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "repayAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "cTokenCollateral",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "seizeTokens",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "refundAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "RefundLiquidator",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "satelliteLoanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "satelliteLoanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "mappedLoanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "mappedLoanAssetChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "SatelliteLoanMarketSupported",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountWithdrawn",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amountRemaining",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "WithdrawFromReserves",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "EXCHANGE_RATE_DECIMALS",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "FACTOR_DECIMALS",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "FEE_PRECISION",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "selector",
+        "type": "bytes"
+      }
+    ],
+    "name": "_masterInternalsView",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "acceptAdministration",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "accountCollateralMarkets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "enum MasterStorage.CollateralMarketType",
+        "name": "marketType",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "accountLoanMarketBorrows",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "principal",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "interestIndex",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "accountLoanMarkets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "accountMembership",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "accrueInterestOnAllLoanMarkets",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MasterStorage.LoanMarketMetadata",
+        "name": "targetMarket",
+        "type": "tuple"
+      }
+    ],
+    "name": "accrueInterestOnSingleLoanMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "admin",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "adminCandidate",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MasterStorage.LoanMarketMetadata",
+        "name": "targetMarket",
+        "type": "tuple"
+      }
+    ],
+    "name": "borrowBalanceStored",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_borrowBalanceStored",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "newLiqIncentive",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeLiqIncentive",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IMiddleLayer",
+        "name": "newMid",
+        "type": "address"
+      }
+    ],
+    "name": "changeMiddleLayer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "newProtocolSeizeShare",
+        "type": "uint256"
+      }
+    ],
+    "name": "changeProtocolSeizeShare",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "collateralAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "collateralAssetChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "collateralBalanceStored",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_collateralBalanceStored",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "collateralBalances",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "collateralRatioModel",
+    "outputs": [
+      {
+        "internalType": "contract ICRMRouter",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "collateralValueIndex",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "enum MasterStorage.CollateralMarketType",
+        "name": "marketType",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "selector",
+        "type": "bytes"
+      }
+    ],
+    "name": "delegateToMasterInternals",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "pTokenChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "exchangeRate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_exchangeRate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_normalizeFactor",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "effectsToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "effectsTokenChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "withdrawAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "borrowAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "getHypotheticalAccountLiquidity",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "surplus",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "shortfall",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "interestRateModel",
+    "outputs": [
+      {
+        "internalType": "contract IIRMRouter",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "isLoanMarketMember",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "asset",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MasterStorage.MarketMetadata",
+        "name": "seizeMarket",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "chainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct MasterStorage.LoanMarketMetadata",
+        "name": "loanMarket",
+        "type": "tuple"
+      },
+      {
+        "internalType": "address",
+        "name": "borrower",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "repayAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "liquidateCalculateSeizeTokens",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "actualRepayAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "protocolSeizeAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "refundAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "seizeAmount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "shouldList",
+        "type": "bool"
+      }
+    ],
+    "name": "listCollateralMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "shouldList",
+        "type": "bool"
+      }
+    ],
+    "name": "listLoanMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "loanMarkets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "accrualBlockNumber",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalReserves",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalBorrows",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "borrowIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "underlying",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "decimals",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bool",
+        "name": "isListed",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalSupplied",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "adminFee",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "mappedLoanAssets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "markets",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "externalExchangeRate",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "lastExchangeRateTimestamp",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "collateralValue",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalSupply",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "liquidityIncentive",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "protocolSeizeShare",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "underlying",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "decimals",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bool",
+        "name": "isListed",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "isRebase",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metadata",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes4",
+            "name": "selector",
+            "type": "bytes4"
+          },
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "borrowAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "targetChainId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IHelper.MBorrow",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "masterBorrow",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metadata",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes4",
+            "name": "selector",
+            "type": "bytes4"
+          },
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "pToken",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "externalExchangeRate",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "depositAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum MasterStorage.CollateralMarketType",
+            "name": "marketType",
+            "type": "uint8"
+          }
+        ],
+        "internalType": "struct IHelper.MDeposit",
+        "name": "params",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "exchangeRateTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "masterDeposit",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "masterInternals",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metadata",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes4",
+            "name": "selector",
+            "type": "bytes4"
+          },
+          {
+            "internalType": "address",
+            "name": "liquidator",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "borrower",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "seizeToken",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "seizeTokenChainId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "repayAmount",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IHelper.MLiquidateBorrow",
+        "name": "params",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "masterLiquidationRequest",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metadata",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes4",
+            "name": "selector",
+            "type": "bytes4"
+          },
+          {
+            "internalType": "address",
+            "name": "borrower",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amountRepaid",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "loanAsset",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct IHelper.MRepay",
+        "name": "params",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "masterRepay",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "metadata",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes4",
+            "name": "selector",
+            "type": "bytes4"
+          },
+          {
+            "internalType": "address",
+            "name": "pToken",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "withdrawAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "targetChainId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IHelper.MWithdraw",
+        "name": "params",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "exchangeRateTimestamp",
+        "type": "uint256"
+      }
+    ],
+    "name": "masterWithdraw",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "maxCollateralPercentages",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "oracle",
+    "outputs": [
+      {
+        "internalType": "contract IPrimeOracle",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_adminCandidate",
+        "type": "address"
+      }
+    ],
+    "name": "proposeAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "repayCredit",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "revokeCandidate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "oldMasterInternals",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "newMasterInternals",
+        "type": "address"
+      }
+    ],
+    "name": "setMasterInternals",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "asset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "maxCollateralPercentage",
+        "type": "uint256"
+      }
+    ],
+    "name": "setMaxCollateralPercentage",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "borrowIndex",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "underlyingChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "underlying",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "adminFee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "decimals",
+        "type": "uint8"
+      },
+      {
+        "internalType": "bool",
+        "name": "isPtoken",
+        "type": "bool"
+      }
+    ],
+    "name": "supportLoanMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "pToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint8",
+        "name": "decimals",
+        "type": "uint8"
+      },
+      {
+        "internalType": "address",
+        "name": "underlying",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "liquidityIncentive",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "protocolSeizeShare",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "isRebase",
+        "type": "bool"
+      }
+    ],
+    "name": "supportMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "mappedLoanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "mappedLoanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "satelliteLoanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "satelliteLoanAssetChainId",
+        "type": "uint256"
+      }
+    ],
+    "name": "supportSatelliteLoanMarket",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "totalUsdCollateralBalance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "withdrawAmount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "loanAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "loanAssetChainId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "receiver",
+        "type": "address"
+      }
+    ],
+    "name": "withdrawReserves",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  }
+]
