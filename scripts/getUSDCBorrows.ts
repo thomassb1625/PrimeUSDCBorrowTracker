@@ -3,7 +3,7 @@ const fs = require('fs');
 const masterStateAbi = require('../ABIs/MasterState.json');
 
 let startBlock = 3895179;
-const topic = ethers.utils.id('LoanMarketEntered(address,uint256,address)');
+const topic = ethers.utils.id('LoanApproved(address,uint256,uint256,uint256,address,uint256)');
 const intrfc =  new ethers.utils.Interface(masterStateAbi);
 const moonbaseChainId = 1287;
 
@@ -88,9 +88,9 @@ export async function getUSDCBorrows(contractAddr: string, usdcAddr: string, dep
 
     rawLogs.forEach((log) => {
         let parsedLog = intrfc.parseLog(log);
-        let user = parsedLog.args[2];
-        let loanAsset = parsedLog.args[0];
-        let loanAssetChainId = parseInt(parsedLog.args[1]._hex, 16);
+        let user = parsedLog.args[0];
+        let loanAsset = parsedLog.args[4];
+        let loanAssetChainId = parseInt(parsedLog.args[5]._hex, 16);
         if(users.indexOf(user) === -1 &&
             ethers.utils.isAddress(user) &&
             loanAssetChainId == moonbaseChainId &&
