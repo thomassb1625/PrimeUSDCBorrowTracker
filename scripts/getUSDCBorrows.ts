@@ -33,7 +33,7 @@ export async function getUSDCBorrows(contractAddr: string, usdcAddr: string, dep
     try {
         let lastUserData = JSON.parse(await fs.readFileSync('data/liveUserData.json'));
         console.log("Found file");
-        i = lastUserData[0].latestBlockNumber;
+        //i = lastUserData[0].latestBlockNumber;
         users = lastUserData[1].users;
     } catch (e) {
         console.log("Error downloading file, continuing with rewrite");
@@ -43,8 +43,6 @@ export async function getUSDCBorrows(contractAddr: string, usdcAddr: string, dep
     if (endBlock == 0) {
         endBlock = await provider.getBlockNumber();
     }
-
-    console.log("Calling all events starting at block " + i);
 
     let rawLogs: Array<any> = new Array();
 
